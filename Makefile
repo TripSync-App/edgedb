@@ -13,4 +13,4 @@ up:
 	docker compose up -d
 
 migrate:
-	docker exec edgedb ./app/migrate.sh
+	docker exec -it edgedb bash ./migrate.sh
