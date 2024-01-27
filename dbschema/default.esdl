@@ -1,25 +1,26 @@
 module default {
   type Vacation {
-    admin_user: User;
+    required admin_user: User;
     discussions: Discussion;
     members: User;
     }
 
   type Discussion {
-      title: str;
-      members: User;
+      required title: str;
+      required members: User;
       messages := .members.messages;
     }
 
   type User {
       messages := .<author;
       discussions := .<members[is Discussion];
-      user_id: int64;
-      is_logged_in: bool;
+      required user_id: int64;
+      required is_logged_in: bool;
+      #TODO: https://www.edgedb.com/docs/stdlib/pgcrypto#function::ext::pgcrypto::crypt for password
     }
 
   type Message {
-    author: User {
+    required author: User {
         readonly := true;
       }
     timestamp: datetime {
