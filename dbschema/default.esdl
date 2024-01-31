@@ -30,6 +30,10 @@ module default {
         };
       required first_name: str;
       required last_name: str;
+      required username: str{
+          constraint exclusive;
+        };
+      required password: str;
       required is_logged_in: bool;
       messages := .<author[is Message];
       discussions := .<members[is Discussion];
