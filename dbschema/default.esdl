@@ -8,7 +8,7 @@ module default {
   type Discussion {
       required title: str;
       required members: User;
-      messages := .members.messages;
+      required vacations := .<discussions;
     }
 
   type User {
