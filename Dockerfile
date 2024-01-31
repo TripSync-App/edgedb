@@ -1,4 +1,4 @@
-FROM edgedb/edgedb
+FROM edgedb/edgedb:latest
 
 ENV EDGEDB_SERVER_TLS_CERT_MODE=generate_self_signed
 ENV EDGEDB_SERVER_SECURITY=insecure_dev_mode

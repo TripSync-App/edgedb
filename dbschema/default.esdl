@@ -1,20 +1,23 @@
 module default {
   type Vacation {
     required admin_user: User;
-    discussions: Discussion;
-    members: User;
+    required name: str;
+    multi link discussions: Discussion;
+    multi link members: User;
   }
 
   type Discussion {
     required title: str;
-    required members: User;
-    required vacations: Vacation;
+    required multi link members: User;
+    required single link vacation: Vacation;
   }
 
   type User {
-      messages := .<author;
+      messages := .<author[is Message];
       discussions := .<members[is Discussion];
-      required user_id: int64;
+      required user_id: int64 {
+          constraint exclusive;
+        };
       required first_name: str;
       required last_name: str;
       required is_logged_in: bool;
@@ -22,7 +25,7 @@ module default {
     }
 
   type Message {
-    required author: User {
+    required single link author: User {
         readonly := true;
       }
     timestamp: datetime {
