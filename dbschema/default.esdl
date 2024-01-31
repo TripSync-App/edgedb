@@ -3,18 +3,20 @@ module default {
     required admin_user: User;
     discussions: Discussion;
     members: User;
-    }
+  }
 
   type Discussion {
-      required title: str;
-      required members: User;
-      required vacations := .<discussions;
-    }
+    required title: str;
+    required members: User;
+    required vacations: Vacation;
+  }
 
   type User {
       messages := .<author;
       discussions := .<members[is Discussion];
       required user_id: int64;
+      required first_name: str;
+      required last_name: str;
       required is_logged_in: bool;
       #TODO: https://www.edgedb.com/docs/stdlib/pgcrypto#function::ext::pgcrypto::crypt for password
     }
