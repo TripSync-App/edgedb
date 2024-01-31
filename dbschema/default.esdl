@@ -12,10 +12,12 @@ module default {
     required single link vacation: Vacation;
   }
 
+  scalar type user_id extending sequence; #NOTE: auto-incrementing ids for easability
+
   type User {
       messages := .<author[is Message];
       discussions := .<members[is Discussion];
-      required user_id: int64 {
+      required user_id: user_id {
           constraint exclusive;
         };
       required first_name: str;
