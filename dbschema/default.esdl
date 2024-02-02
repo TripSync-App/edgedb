@@ -33,7 +33,7 @@ module default {
       required username: str{
           constraint exclusive;
         };
-      required password: str;
+      required password: bytes;
       required is_logged_in: bool;
       messages := .<author[is Message];
       discussions := .<members[is Discussion];
