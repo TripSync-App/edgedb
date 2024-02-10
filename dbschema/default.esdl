@@ -3,6 +3,18 @@ module default {
   scalar type vacation_id extending sequence;
   scalar type discussion_id extending sequence;
   scalar type message_id extending sequence;
+  scalar type team_id extending sequence;
+
+  type Team {
+      required team_id: team_id {
+          constraint exclusive;
+      };
+      required single link admin_user: User;
+      required multi link members: User;
+      multi link vacations: Vacation {
+          constraint exclusive;
+        };
+    }
 
   type Vacation {
     required vacation_id: vacation_id {
@@ -12,6 +24,7 @@ module default {
     required name: str;
     multi link discussions: Discussion;
     multi link members: User;
+    single link team := .<vacations;
   }
 
   type Discussion {
