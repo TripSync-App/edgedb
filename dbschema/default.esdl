@@ -9,6 +9,7 @@ module default {
       required team_id: team_id {
           constraint exclusive;
       };
+      required name: str;
       required single link admin_user: User;
       required multi link members: User;
       multi link vacations: Vacation {
