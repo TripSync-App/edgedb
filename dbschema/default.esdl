@@ -15,6 +15,7 @@ module default {
       multi link vacations: Vacation {
           constraint exclusive;
         };
+      constraint exclusive on ((.admin_user, .name)) # user's can't create teams with the same name
     }
 
   type Vacation {
@@ -26,6 +27,10 @@ module default {
     multi link discussions: Discussion;
     multi link members: User;
     single link team := .<vacations;
+
+    constraint exclusive on ((.name, .admin_user))
+    # NOTE: this is really for a team not to have two vacations with the same name
+    # same result if you make the admin user the exclusive constraint
   }
 
   type Discussion {
