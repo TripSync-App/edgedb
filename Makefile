@@ -1,4 +1,4 @@
-PHONY: stop remove build up
+PHONY: stop remove build up restart
 
 stop:
 	docker stop edgedb
@@ -14,3 +14,5 @@ up:
 
 migrate:
 	docker exec -it edgedb bash ./migrate.sh
+
+restart: stop remove build up migrate

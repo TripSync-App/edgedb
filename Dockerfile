@@ -10,6 +10,8 @@ WORKDIR /app
 COPY edgedb.toml .
 COPY migrate.sh .
 COPY test_data.edgeql .
+COPY test_users.edgeql .
+COPY test_teams.edgeql .
 COPY dbschema ./dbschema/
 
 EXPOSE 5656

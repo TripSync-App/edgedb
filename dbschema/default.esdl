@@ -15,6 +15,7 @@ module default {
       multi link vacations: Vacation {
           constraint exclusive;
         };
+      multi link discussions := .vacations.discussions;
       constraint exclusive on ((.admin_user, .name)) # user's can't create teams with the same name
     }
 
@@ -47,16 +48,17 @@ module default {
       required user_id: user_id {
           constraint exclusive;
         };
-      required first_name: str;
-      required last_name: str;
       required username: str{
           constraint exclusive;
         };
+
+      required first_name: str;
+      required last_name: str;
       required password: bytes;
       required is_logged_in: bool;
       messages := .<author[is Message];
       discussions := .<members[is Discussion];
-      #TODO: https://www.edgedb.com/docs/stdlib/pgcrypto#function::ext::pgcrypto::crypt for password
+      teams := .<members[is Team];
     }
 
   type Message {
