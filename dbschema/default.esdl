@@ -11,7 +11,9 @@ module default {
       };
       required name: str;
       required single link admin_user: User;
-      single link invite: Invite;
+      single link invite: Invite {
+          constraint exclusive;
+        };
       required multi link members: User;
       multi link vacations: Vacation {
           constraint exclusive;
@@ -81,5 +83,6 @@ module default {
 
   type Invite {
       required code: str;
+      single link team := .<invite[is Team];
     }
 }
