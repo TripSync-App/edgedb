@@ -11,6 +11,7 @@ module default {
       };
       required name: str;
       required single link admin_user: User;
+      single link invite: Invite;
       required multi link members: User;
       multi link vacations: Vacation {
           constraint exclusive;
@@ -76,5 +77,9 @@ module default {
         default := datetime_current();
       }
     text: str;
+    }
+
+  type Invite {
+      required code: str;
     }
 }
