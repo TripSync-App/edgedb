@@ -82,7 +82,9 @@ module default {
     }
 
   type Invite {
-      required code: str;
+      required code: str {
+          constraint exclusive;
+        };
       single link team := .<invite[is Team];
     }
 }
