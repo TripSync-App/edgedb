@@ -205,3 +205,43 @@ INSERT default::User {
     last_name := 'user',
     is_logged_in := false
 };
+
+INSERT default::User {
+    username := 'jpyles',
+    password := b'$2b$12$qq0hI91lj/uqUfLtpKAx1.IcksajZLE0yUsOmhiKEjxQBfvdD.wHG',
+    first_name := 'Jayden',
+    last_name := 'Pyles',
+    is_logged_in := false
+};
+
+INSERT default::User {
+    username := 'kaib',
+    password := b'$2b$12$qq0hI91lj/uqUfLtpKAx1.IcksajZLE0yUsOmhiKEjxQBfvdD.wHG',
+    first_name := 'Kai',
+    last_name := 'Battle',
+    is_logged_in := false
+};
+
+INSERT default::User {
+    username := 'neham',
+    password := b'$2b$12$qq0hI91lj/uqUfLtpKAx1.IcksajZLE0yUsOmhiKEjxQBfvdD.wHG',
+    first_name := 'Neha',
+    last_name := 'Moolchandani',
+    is_logged_in := false
+};
+
+INSERT default::User {
+    username := 'aksharp',
+    password := b'$2b$12$qq0hI91lj/uqUfLtpKAx1.IcksajZLE0yUsOmhiKEjxQBfvdD.wHG',
+    first_name := 'Akshar',
+    last_name := 'Patel',
+    is_logged_in := false
+};
+
+INSERT default::User {
+    username := 'torm',
+    password := b'$2b$12$qq0hI91lj/uqUfLtpKAx1.IcksajZLE0yUsOmhiKEjxQBfvdD.wHG',
+    first_name := 'Josh',
+    last_name := 'Daugherty',
+    is_logged_in := false
+};

@@ -12,6 +12,9 @@ COPY migrate.sh .
 COPY test_data.edgeql .
 COPY test_users.edgeql .
 COPY test_teams.edgeql .
+COPY test_vacations.edgeql .
+COPY test_discussions.edgeql .
+
 COPY dbschema ./dbschema/
 
 EXPOSE 5656
