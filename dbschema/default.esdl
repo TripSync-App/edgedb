@@ -14,7 +14,7 @@ module default {
       single link invite: Invite {
           constraint exclusive;
         };
-      required multi link members: User;
+      multi link members: User; #NOTE: optional due to new team
       multi link vacations: Vacation {
           constraint exclusive;
         };
