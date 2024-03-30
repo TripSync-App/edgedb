@@ -44,6 +44,9 @@ module default {
     required title: str;
     required multi link members: User;
     required single link vacation: Vacation;
+
+    constraint exclusive on ((.vacation, .title))
+
   }
 
 
@@ -79,6 +82,9 @@ module default {
         default := datetime_current();
       }
     text: str;
+    required single link discussion: Discussion{
+        readonly := true;
+      };
     }
 
   type Invite {
