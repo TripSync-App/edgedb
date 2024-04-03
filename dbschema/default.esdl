@@ -10,13 +10,18 @@ module default {
           constraint exclusive;
       };
       required name: str;
-      required single link admin_user: User;
+      required single link admin_user: User {
+          on target delete delete source;
+        };
       single link invite: Invite {
           constraint exclusive;
         };
-      multi link members: User; #NOTE: optional due to new team
+      multi link members: User {
+          on target delete allow;
+        }; #NOTE: optional due to new team
       multi link vacations: Vacation {
           constraint exclusive;
+          on target delete allow;
         };
       multi link discussions := .vacations.discussions;
       constraint exclusive on ((.admin_user, .name)) # user's can't create teams with the same name
@@ -26,10 +31,16 @@ module default {
     required vacation_id: vacation_id {
         constraint exclusive;
     };
-    required admin_user: User;
+    required admin_user: User {
+      on target delete delete source;
+    };
     required name: str;
-    multi link discussions: Discussion;
-    multi link members: User;
+    multi link discussions: Discussion {
+        on target delete allow;
+    };
+    multi link members: User {
+      on target delete allow;
+    };
     single link team := .<vacations;
 
     constraint exclusive on ((.name, .admin_user))
@@ -42,9 +53,12 @@ module default {
         constraint exclusive;
     };
     required title: str;
-    required multi link members: User;
-    required single link vacation: Vacation;
-
+    required multi link members: User {
+        on target delete allow;
+    };
+    required single link vacation: Vacation {
+      on target delete delete source;
+    };
     constraint exclusive on ((.vacation, .title))
 
   }
@@ -73,6 +87,7 @@ module default {
       };
     required single link author: User {
         readonly := true;
+        on target delete delete source;
       }
     timestamp: datetime {
         default := datetime_current();
