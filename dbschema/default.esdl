@@ -35,9 +35,6 @@ module default {
       on target delete delete source;
     };
     required name: str;
-    multi link discussions: Discussion {
-        on target delete allow;
-    };
     multi link members: User {
       on target delete allow;
     };
@@ -47,6 +44,8 @@ module default {
     imageUrl: str;
     tags: str;
     color: str;
+
+    multi link discussions := .<vacation[is default::Discussion];
 
     constraint exclusive on ((.name, .admin_user))
     # NOTE: this is really for a team not to have two vacations with the same name
