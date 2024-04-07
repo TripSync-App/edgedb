@@ -43,6 +43,11 @@ module default {
     };
     single link team := .<vacations;
 
+    description: str;
+    imageUrl: str;
+    tags: str;
+    color: str;
+
     constraint exclusive on ((.name, .admin_user))
     # NOTE: this is really for a team not to have two vacations with the same name
     # same result if you make the admin user the exclusive constraint
