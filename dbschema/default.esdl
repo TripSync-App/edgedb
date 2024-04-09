@@ -28,6 +28,13 @@ module default {
     }
 
   type Vacation {
+    timestamp: datetime {
+        default := datetime_current();
+        readonly := true;
+      }
+    last_updated: datetime {
+        default := datetime_current();
+      }
     required vacation_id: vacation_id {
         constraint exclusive;
     };
@@ -53,6 +60,13 @@ module default {
   }
 
   type Discussion {
+    timestamp: datetime {
+        default := datetime_current();
+        readonly := true;
+      }
+    last_updated: datetime {
+        default := datetime_current();
+      }
     required discussion_id: discussion_id {
         constraint exclusive;
     };
@@ -63,6 +77,7 @@ module default {
     required single link vacation: Vacation {
       on target delete delete source;
     };
+    multi link messages := .<discussion;
     constraint exclusive on ((.vacation, .title))
 
   }
