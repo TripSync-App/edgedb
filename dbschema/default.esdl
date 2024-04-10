@@ -71,6 +71,9 @@ module default {
         constraint exclusive;
     };
     required title: str;
+    required finalized: bool {
+        default := false;
+    }
     required multi link members: User {
         on target delete allow;
     };
