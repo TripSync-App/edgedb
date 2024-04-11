@@ -81,6 +81,7 @@ module default {
       on target delete delete source;
     };
     multi link messages := .<discussion;
+    single link event: Event;
     constraint exclusive on ((.vacation, .title))
 
   }
@@ -130,4 +131,11 @@ module default {
         };
       single link team := .<invite[is Team];
     }
+
+  type Event {
+    discussion_title: str;
+    date: str;
+    time: str;
+    address: str;
+  }
 }
