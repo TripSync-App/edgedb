@@ -137,5 +137,7 @@ module default {
     date: str;
     time: str;
     address: str;
+    lat: float64;
+    lng: float64;
   }
 }
